@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 4</title>
+    <style>
+        body {
+            padding: 3%;
+        }
+        div {
+            margin: 0 auto;
+            text-align: center;
+            padding: 0.5%;
+        }
+        button {
+            margin: 0 1%;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>Задание 4</h1>
+    <span>Выполнить задание 2 отправкой запросов с помощью библиотеки jQuery браузере синхронно и асинхронно</span><br>
+    <h2>Синхронные функции</h2>
+    <button disabled
+            title="Получить главную страницу методом GET в протоколе HTTP 1.0">1 задание
+    </button>
+    <button id="taskSyn2"
+            title="Получить внутреннюю страницу методом GET в протоколе HTTP 1.1">2 задание
+    </button>
+    <button id="taskSyn3"
+            title="Определить размер файла file.tar.gz, не скачивая его">3 задание
+    </button>
+    <button id="taskSyn4"
+            title="Определить медиатип ресурса /image.png">4 задание
+    </button>
+    <button id="taskSyn5"
+            title="Отправить комментарий на сервер по адресу /index.php">5 задание
+    </button>
+    <button id="taskSyn6"
+            title="Получить первые 100 байт файла /file.tar.gz">6 задание
+    </button>
+    <button id="taskSyn7"
+            title="Определить кодировку ресурса /index.php">7 задание
+    </button>
+
+    <h2>Асинхронные функции</h2>
+    <button disabled
+            title="Получить главную страницу методом GET в протоколе HTTP 1.0">1 задание
+    </button>
+    <button id="taskAsyn2"
+            title="Получить внутреннюю страницу методом GET в протоколе HTTP 1.1">2 задание
+    </button>
+    <button id="taskAsyn3"
+            title="Определить размер файла file.tar.gz, не скачивая его">3 задание
+    </button>
+    <button id="taskAsyn4"
+            title="Определить медиатип ресурса /image.png">4 задание
+    </button>
+    <button id="taskAsyn5"
+            title="Отправить комментарий на сервер по адресу /index.php">5 задание
+    </button>
+    <button id="taskAsyn6"
+            title="Получить первые 100 байт файла /file.tar.gz">6 задание
+    </button>
+    <button id="taskAsyn7"
+            title="Определить кодировку ресурса /index.php">7 задание
+    </button>
+
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+    $(function () {
+        $("#taskSyn2").click(function () {
+            var url = "https://jino24.ru/";
+            jQuery.ajax({
+                async: false,
+                url: url,
+                success: function (data) {
+                    alert(data);
+                }
+            })
+        })
+
+        $("#taskSyn3").click(function () {
+            var url = "https://jino24.ru/sitemap.xml";
+            jQuery.ajax({
+                async: false,
+                url: url,
+                success: function (data, textStatus, request) {
+                    alert("content-length: " + request.getResponseHeader("content-length") + ", URL: " + url);
+                },
+            });
+        });
+
+        $("#taskSyn4").click(function () {
+            var url = "https://jino24.ru/static/jino/img/logo-light-bg.png";
+            jQuery.ajax({
+                async: false,
+                url: url,
+                success: function (data, textStatus, request) {
+                    alert("content-type: " + request.getResponseHeader("content-type") + ", URL: " + url);
+                },
+            })
+        });
+
+        $("#taskSyn5").click(function () {
+            var url = "https://jino24.ru/";
+            jQuery.ajax({
+                async: false,
+                url: "",
+                success: function (data) {
+                    alert(data)
+                }
+            })
+        });
+
+        $("#taskSyn6").click(function () {
+            var url = "https://jino24.ru/sitemap.xml";
+            jQuery.ajax({
+                async: false,
+                url: url,
+                headers: {
+                    "Range": "bytes=0-99",
+                },
+                error: function (data, textStatus, request) {
+                    alert("Ошибка, первые 100 байт текста:\n\n" + data.responseText + "\nURL: " + url);
+                },
+            })
+        });
+
+        $("#taskSyn7").click(function () {
+            var url = "https://jino24.ru/";
+            jQuery.ajax({
+                async: false,
+                url: url,
+                success: function (data, textStatus, request) {
+                    alert("content-type: " + request.getResponseHeader("content-type") + ", URL: " + url);
+                },
+            })
+        })
+
+
+        $("#taskAsyn2").click(function () {
+            var url = "https://jino24.ru/";
+            jQuery.ajax({
+                url: url,
+                success: function (data) {
+                    alert(data);
+                }
+            })
+        })
+
+        $("#taskAsyn3").click(function () {
+            var url = "https://jino24.ru/sitemap.xml";
+            jQuery.ajax({
+                url: url,
+                success: function (data, textStatus, request) {
+                    alert("content-length: " + request.getResponseHeader("content-length") + ", URL: " + url);
+                },
+            });
+        });
+
+        $("#taskAsyn4").click(function () {
+            var url = "https://jino24.ru/static/jino/img/logo-light-bg.png";
+            jQuery.ajax({
+                url: url,
+                success: function (data, textStatus, request) {
+                    alert("content-type: " + request.getResponseHeader("content-type") + ", URL: " + url);
+                },
+            })
+        });
+
+        $("#taskAsyn5").click(function () {
+            var url = "https://jino24.ru/";
+            jQuery.ajax({
+                url: "",
+                success: function (data) {
+                    alert(data)
+                }
+            })
+        });
+
+        $("#taskAsyn6").click(function () {
+            var url = "https://jino24.ru/sitemap.xml";
+            jQuery.ajax({
+                url: url,
+                headers: {
+                    "Range": "bytes=0-99",
+                },
+                error: function (data, textStatus, request) {
+                    alert("Ошибка, первые 100 байт текста:\n\n" + data.responseText + "\nURL: " + url);
+                },
+            })
+        });
+
+        $("#taskAsyn7").click(function () {
+            var url = "https://jino24.ru/";
+            jQuery.ajax({
+                url: url,
+                success: function (data, textStatus, request) {
+                    alert("content-type: " + request.getResponseHeader("content-type") + ", URL: " + url);
+                },
+            })
+        })
+    });
+</script>
+</body>
+</html>
