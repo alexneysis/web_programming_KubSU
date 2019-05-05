@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 3</title>
+    <style>
+        body {
+            padding: 3%;
+        }
+
+        div {
+            margin: 0 auto;
+            text-align: center;
+            padding: 0.5%;
+        }
+
+        button {
+            margin: 0 1%;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>3 задание</h1>
+    <span>Выполнить задание 2 отправкой запросов с помощью объекта XMLHttpRequest в браузере синхронно и асинхронно.</span><br>
+    <h2>Синхронные функции</h2>
+    <button disabled title="Получить главную страницу методом GET в протоколе HTTP 1.0">1 задание
+    </button>
+    <button onclick="taskSyn2()" title="Получить внутреннюю страницу методом GET в протоколе HTTP 1.1">2 задание
+    </button>
+    <button onclick="taskSyn3()" title="Определить размер файла file.tar.gz, не скачивая его">3 задание
+    </button>
+    <button onclick="taskSyn4()" title="Определить медиатип ресурса /image.png">4 задание
+    </button>
+    <button onclick="taskSyn5()" title="Отправить комментарий на сервер по адресу /index.php">5 задание
+    </button>
+    <button onclick="taskSyn6()" title="Получить первые 100 байт файла /file.tar.gz">6 задание
+    </button>
+    <button onclick="taskSyn7()" title="Определить кодировку ресурса /index.php">7 задание
+    </button>
+
+    <h2>Асинхронные функции</h2>
+    <button disabled title="Получить главную страницу методом GET в протоколе HTTP 1.0">1 задание
+    </button>
+    <button onclick="taskAsyn2()" title="Получить внутреннюю страницу методом GET в протоколе HTTP 1.1">2 задание
+    </button>
+    <button onclick="taskAsyn3()" title="Определить размер файла file.tar.gz, не скачивая его">3 задание
+    </button>
+    <button onclick="taskAsyn4()" title="Определить медиатип ресурса /image.png">4 задание
+    </button>
+    <button onclick="taskAsyn5()" title="Отправить комментарий на сервер по адресу /index.php">5 задание
+    </button>
+    <button onclick="taskAsyn6()" title="Получить первые 100 байт файла /file.tar.gz">6 задание
+    </button>
+    <button onclick="taskAsyn7()" title="Определить кодировку ресурса /index.php">7 задание
+    </button>
+</div>
+
+<script title="syn">
+    function taskSyn2() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://jino24.ru', false);
+        xhr.send();
+        if (xhr.status != 200) {
+            alert(xhr.status + ': ' + xhr.statusText);
+        } else {
+            alert(xhr.responseText);
+        }
+    }
+
+    function taskSyn3() {
+        var xhr = new XMLHttpRequest();
+        var URL = "https://jino24.ru/sitemap.xml";
+        xhr.open('GET', URL, false);
+        xhr.send();
+        if (xhr.status != 200) {
+            alert(xhr.status + ': ' + xhr.statusText);
+        } else {
+            alert("content-length: " + xhr.getResponseHeader("content-length") + ", URL: " + URL);
+        }
+    }
+
+    function taskSyn4() {
+        var xhr = new XMLHttpRequest();
+        var URL = "https://jino24.ru/static/jino/img/logo-light-bg.png";
+        xhr.open('GET', URL, false);
+        xhr.send();
+        if (xhr.status != 200) {
+            alert(xhr.status + ': ' + xhr.statusText);
+        } else {
+            alert("content-type: " + xhr.getResponseHeader("content-type") + ", URL: " + URL);
+        }
+    }
+
+    function taskSyn5() {
+        var xhr = new XMLHttpRequest();
+        var URL = "https://jino24.ru/homework/request";
+        xhr.open('POST', URL, false);
+        xhr.setRequestHeader("content-type", "text/xml");
+        xhr.send("comment=Hello, World!");
+        if (xhr.status != 200) {
+            alert(xhr.status + ': ' + xhr.statusText);
+        }
+    }
+
+    function taskSyn6() {
+        var xhr = new XMLHttpRequest();
+        var URL = "https://jino24.ru/sitemap.xml";
+        xhr.open('GET', URL, false);
+        xhr.setRequestHeader("Range", "bytes=0-99");
+        xhr.send();
+        if (xhr.status != 200) {
+            alert(xhr.status + ': ' + xhr.statusText + "\ntext: " + xhr.responseText);
+        }
+    }
+
+    function taskSyn7() {
+        var xhr = new XMLHttpRequest();
+        var URL = "https://jino24.ru/homework";
+        xhr.open('GET', URL, false);
+        xhr.send();
+        if (xhr.status != 200) {
+            alert(xhr.status + ': ' + xhr.statusText);
+        } else {
+            alert("content-type: " + xhr.getResponseHeader("content-type") + ", URL: " + URL);
+        }
+    }
+</script>
+
+<script title="asyn">
+    function taskAsyn2() {
+        var xhr = new XMLHttpRequest();
+        var URL = 'https://jino24.ru';
+        xhr.open('GET', URL, true);
+        xhr.send();
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState != 4) return;
+            if (xhr.status != 200) {
+                alert(xhr.status + ': ' + xhr.statusText);
+            } else {
+                alert(xhr.responseText);
+            }
+        }
+    }
+
+    function taskAsyn3() {
+        var xhr = new XMLHttpRequest();
+        var URL = "https://jino24.ru/sitemap.xml";
+        xhr.open('GET', URL, true);
+        xhr.send();
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState != 4) return;
+
+            if (xhr.status != 200) {
+                alert(xhr.status + ': ' + xhr.statusText);
+            } else {
+                alert("content-length: " + xhr.getResponseHeader("content-length") + ", URL: " + URL);
+            }
+        }
+    }
+
+    function taskAsyn4() {
+        var xhr = new XMLHttpRequest();
+        var URL = "https://jino24.ru/static/jino/img/logo-light-bg.png";
+        xhr.open('GET', URL, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState != 4) return;
+            if (xhr.status != 200) {
+                alert(xhr.status + ': ' + xhr.statusText);
+            } else {
+                alert("content-type: " + xhr.getResponseHeader("content-type") + ", URL: " + URL);
+            }
+        }
+    }
+
+    function taskAsyn5() {
+        var xhr = new XMLHttpRequest();
+        var URL = "https://jino24.ru/homework/request";
+        xhr.open('POST', URL, true);
+        xhr.setRequestHeader("content-type", "text/xml");
+        xhr.send("comment=Hello, World!");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState != 4) return;
+            if (xhr.status != 200) {
+                alert(xhr.status + ': ' + xhr.statusText);
+            }
+        }
+    }
+
+    function taskAsyn6() {
+        var xhr = new XMLHttpRequest();
+        var URL = "https://jino24.ru/sitemap.xml";
+        xhr.open('GET', URL, true);
+        xhr.setRequestHeader("Range", "bytes=0-100");
+        xhr.send();
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState != 4) return;
+            if (xhr.status != 200) {
+                alert(xhr.status + ': ' + xhr.statusText + "\ntext: " + xhr.responseText);
+            }
+        }
+    }
+
+    function taskAsyn7() {
+        var xhr = new XMLHttpRequest();
+        var URL = "https://jino24.ru/homework/";
+        xhr.open('GET', URL, true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState != 4) return;
+            if (xhr.status != 200) {
+                alert(xhr.status + ': ' + xhr.statusText);
+            } else {
+                alert("content-type: " + xhr.getResponseHeader("content-type") + ", URL: " + URL);
+            }
+        }
+    }
+</script>
+</body>
+</html>
