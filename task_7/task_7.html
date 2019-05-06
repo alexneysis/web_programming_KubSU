@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 7</title>
+    <style>
+        body {
+            padding: 4%;
+        }
+
+        div {
+            margin: 0 auto;
+            padding: 0.5%;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+        }
+
+        input:invalid {
+            border: 1.5px solid red;
+        }
+
+        input:valid {
+            border: 2px solid green;
+        }
+
+        input {
+            border: 2px solid black;
+            padding-left: 5px;
+            border-radius: 7px;
+            margin: 10px 5px;
+        }
+
+
+        fieldset {
+            margin-bottom: 2%;
+            padding: 1% 2%;
+        }
+
+
+        p {
+            margin-left: 1%;
+        }
+
+        option {
+            padding: 1px 20px;
+        }
+
+        optgroup {
+            padding: 5px 25px;
+        }
+
+        textarea {
+            padding: 5px;
+        }
+
+        .buttonSend {
+            display: block;
+            margin: 2% auto;
+            width: 150px;
+            height: 40px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .table {
+            display: table;
+        }
+
+        .inputFIO {
+            margin-right: 1%;
+            margin-bottom: 1%;
+        }
+
+        .row {
+            display: table-row;
+        }
+
+        .cell {
+            display: table-cell;
+            padding: 10px 30px;
+        }
+
+        .contactInfo {
+            width: 60%;
+        }
+
+        .containerInputFIO {
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+<div>
+    <h1>7 задание</h1>
+    <p>Составить HTML-форму с полями:</p>
+    <ul>
+        <li>имя (текстовое поле);</li>
+        <li>e-mail (текстовое поле);</li>
+        <li>год рождения (выбор из списка);</li>
+        <li>пол (радиокнопки);</li>
+        <li>количество конечностей (радиокнопки);</li>
+        <li>сверхспособности: бессмертие, прохождение сквозь стены, левитация (множественный выбор из списка);</li>
+        <li>биография (многострочное текстовое поле);</li>
+        <li>с контрактом ознакомлен (чекбокс);</li>
+        <li>кнопка «Отправить»</li>
+    </ul>
+    <p>Оформить страницу красиво с использованием CSS.</p><br><br>
+
+    <h1>Анкета программиста</h1>
+    <form method="post" action="">
+        <fieldset class="contactInfo">
+            <legend>Контактная информация чтобы связаться с вами</legend>
+            <p class="containerInputFIO"><input class="inputFIO" type="text" placeholder="Фамилия" required> <input
+                    class="inputFIO" type="text"
+                    placeholder="Имя" required>
+                <input class="inputFIO"
+                       type="text" placeholder="Отчество" required></p>
+            <p><input type="email" required placeholder="exmaple@mail.ru"></p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Информация о себе</legend>
+            <p>Дата рождения</p>
+            <select>
+                <optgroup label="90-e годы">
+                    <option>1990</option>
+                    <option>1991</option>
+                    <option>1992</option>
+                    <option>1993</option>
+                    <option>1994</option>
+                    <option>1995</option>
+                    <option>1996</option>
+                    <option>1997</option>
+                    <option>1998</option>
+                    <option>1999</option>
+                </optgroup>
+                <optgroup label="2000-e годы">
+                    <option>2000</option>
+                    <option>2001</option>
+                    <option>2002</option>
+                    <option>2003</option>
+                    <option>2004</option>
+                    <option>2005</option>
+                    <option>2006</option>
+                    <option>2007</option>
+                    <option>2008</option>
+                    <option>2009</option>
+                </optgroup>
+                <optgroup label="2010-e годы">
+                    <option>2010</option>
+                    <option>2011</option>
+                    <option>2012</option>
+                    <option>2013</option>
+                    <option>2014</option>
+                    <option>2015</option>
+                    <option>2016</option>
+                    <option>2017</option>
+                    <option>2018</option>
+                    <option>2019</option>
+                </optgroup>
+            </select>
+            <br>
+            <br>
+
+            <p>Выберете свой пол</p>
+            <div class="table">
+                <div class="row">
+                    <div class="cell"><input class="radioSex" name="sex" type="radio">
+                        бесполый
+                    </div>
+                    <div class="cell"><input class="radioSex" name="sex" type="radio">андроген,
+                        гермафродит
+                        (мужчиноженщина)
+                    </div>
+                    <div class="cell"><input class="radioSex" name="sex" type="radio">мужеженственный
+                        (внутреннее, по
+                        ощущениям)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input class="radioSex" name="sex" type="radio">ощущающие
+                        себя в разное
+                        время то
+                        мужчиной, то женщиной
+                    </div>
+                    <div class="cell"><input class="radioSex" name="sex" type="radio">пред или
+                        недо (без
+                        негативной
+                        коннотации)
+                    </div>
+
+                    <div class="cell"><input name="sex" type="radio">предженский, недоженский</div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio">предмужской, недомужской</div>
+                    <div class="cell"><input name="sex" type="radio">предмужчина, недомужчина</div>
+                    <div class="cell"><input name="sex" type="radio"> предженщина, недоженщина</div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio"> предполовой, недополовой</div>
+
+                    <div class="cell"><input name="sex" type="radio"> женский предпол, недополовой
+                        женский
+                    </div>
+                    <div class="cell"><input name="sex" type="radio"> мужской предпол, недополовой
+                        мужской
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio"> предполовой мужчина, недополовой
+                        мужчина
+                    </div>
+                    <div class="cell"><input name="sex" type="radio"> предполовая женщина, недополовая
+                        женщина
+                    </div>
+                    <div class="cell"><input name="sex" type="radio"> от женского к мужскому</div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio"> женщина, хирургически, внешне,
+                        принявшая облик мужчины
+                    </div>
+                    <div class="cell"><input name="sex" type="radio"> неустойчивый, «текучий»</div>
+                    <div class="cell"><input name="sex" type="radio"> отрицающий традиционную
+                        классификацию
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio"> пол, остающийся под вопросом</div>
+                    <div class="cell"><input name="sex" type="radio"> пол, допускающий несколько
+                        вариантов
+                    </div>
+
+
+                    <div class="cell"><input name="sex" type="radio"> свой особенный, своеобычный</div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio"> межполовой</div>
+                    <div class="cell"><input name="sex" type="radio"> от мужчины к женщине</div>
+                    <div class="cell"><input name="sex" type="radio"> мужчина, хирургически, внешне,
+                        принявший облик женщины
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio"> ни тот, ни другой (из двух
+                        традиционных)
+                    </div>
+                    <div class="cell"><input name="sex" type="radio"> стремящиеся устранить половые
+                        признаки во внешнем виде
+                    </div>
+                    <div class="cell"><input name="sex" type="radio"> отрицающий систему двух полов</div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio"> другое</div>
+                    <div class="cell"><input name="sex" type="radio"> всеобщеполовой</div>
+                    <div class="cell"><input name="sex" type="radio"> переходной к другому полу</div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio"> переходной к женскому половому
+                        состоянию
+                    </div>
+                    <div class="cell"><input name="sex" type="radio"> переходной к мужскому половому
+                        состоянию
+                    </div>
+                    <div class="cell"><input name="sex" type="radio"> переходной к мужчине</div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio"> переходной к лицу, вне половой
+                        классификации
+                    </div>
+                    <div class="cell"><input name="sex" type="radio"> переходной к женщине</div>
+                    <div class="cell"><input name="sex" type="radio"> переходной к другому полу (* — с
+                        сохранением тайны)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio"> переходной к женскому половому
+                        состоянию (*)
+                    </div>
+                    <div class="cell"><input name="sex" type="radio"> переходной к мужскому половому
+                        состоянию(*)
+                    </div>
+                    <div class="cell"><input name="sex" type="radio"> переходной к мужчине(*)</div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio"> переходной к лицу, вне половой
+                        классификации(*)
+                    </div>
+
+                    <div class="cell"><input name="sex" type="radio"> переходной к женщине(*)</div>
+                    <div class="cell"><input name="sex" type="radio"> транссексуальный</div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio"> женский траннсексуальный</div>
+                    <div class="cell"><input name="sex" type="radio"> мужской транссексуальный</div>
+                    <div class="cell"><input name="sex" type="radio"> мужчина транссексуал</div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio"> лицо траннсексуал</div>
+                    <div class="cell"><input name="sex" type="radio"> женщина транссексуал</div>
+                    <div class="cell"><input name="sex" type="radio"> «за пределами мужского» (фантазии
+                        на тему мужского пола)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="sex" type="radio"> две души, «двудушный» (без
+                        негативной коннотации)
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <p>Количество лишних конечностей</p>
+            <div class="table">
+                <div class="row">
+                    <div class="cell"><input name="member" type="radio" value="1">Всё в нужном количестве</div>
+                    <div class="cell"><input name="member" type="radio" value="1">Приобрел&#160;1</div>
+                    <div class="cell"><input name="member" type="radio" value="2">Приобрел&#160;2</div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="member" type="radio" value="3">Приобрел&#160;3</div>
+                    <div class="cell"><input name="member" type="radio" value="4">Приобрел&#160;4</div>
+                    <div class="cell"><input name="member" type="radio" value="4">Приобрел&#160;5 и больше</div>
+                </div>
+            </div>
+            <br>
+
+            <p>Суперспособности</p>
+            <div class="table">
+                <div class="row">
+                    <div class="cell checkbox"><input name="superpower" type="checkbox" value="бессмертие" checked>сдавать
+                        задания
+                    </div>
+                    <div class="cell"><input name="superpower" type="checkbox" value="бессмертие">бессмертие</div>
+                    <div class="cell"><input name="superpower" type="checkbox" value="бессмертие">не ходить на пары и
+                        сдавать всё
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="cell"><input name="superpower" type="checkbox" value="прохождение сквозь стены">проходить
+                        сквозь
+                        стены
+                    </div>
+                    <div class="cell"><input name="superpower" type="checkbox" value="бессмертие">писать код без ошибок
+                    </div>
+                    <div class="cell"><input name="superpower" type="checkbox" value="левитация">летать</div>
+                </div>
+            </div>
+            <br>
+
+            <p>В какие страны запрещен въезд?</p>
+            <select multiple>
+                <option>Россия</option>
+                <option>Украина</option>
+                <option>США</option>
+                <option>Китай</option>
+                <option>Нигерия</option>
+            </select>
+
+            <p>Интересные факты</p>
+            <textarea cols="40" rows="6"></textarea>
+            <br>
+
+            <input name="yes" type="checkbox"/>Готовы переписать всё своё имущество на нас?
+        </fieldset>
+        <fieldset>
+            <legend>Вам понравилась форма?</legend>
+            <input name="rate" type="radio" title="ужасно"/>
+            <label title="ужасно">0</label>
+
+            <input name="rate" type="radio" title="плохо"/>
+            <label title="плохо">1</label>
+
+            <input name="rate" type="radio" title="нормально"/>
+            <label title="нормально">2</label>
+
+            <input name="rate" type="radio" title="хорошо"/>
+            <label title="хорошо">3</label>
+
+            <input name="rate" type="radio" title="отлично"/>
+            <label title="отлично">4</label>
+        </fieldset>
+        <input class="buttonSend" type="submit" value="Отправить">
+    </form>
+</div>
+</body>
+</html>
