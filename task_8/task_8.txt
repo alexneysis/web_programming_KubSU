@@ -1,0 +1,68 @@
+#Функция django для обработки запроса от формы
+
+def send_form(request):
+    try:
+        data = request.POST
+        root = xml.Element("form")
+        contactInf = xml.Element("contact_Information")
+        aboutYou = xml.Element("about_you")
+        rate_form = xml.Element("rate_form")
+        root.append(contactInf)
+        root.append(aboutYou)
+        root.append(rate_form)
+
+        # contact_Information
+        surname = xml.SubElement(contactInf, "surname")
+        surname.text = data.getlist("surname")[0]
+
+        first_name = xml.SubElement(contactInf, "first_name")
+        first_name.text = data.getlist("firstName")[0]
+
+        patronomic = xml.SubElement(contactInf, "patronomic")
+        patronomic.text = data.getlist("patronomic")[0]
+
+        email = xml.SubElement(contactInf, "email")
+        email.text = data.getlist("email")[0]
+
+        # about you
+        birthday = xml.SubElement(aboutYou, "birthday")
+        birthday.text = data.getlist("birthday")[0]
+
+        sex = xml.SubElement(aboutYou, "sex")
+        sex.text = data.getlist("sex")[0]
+
+        extremity = xml.SubElement(aboutYou, "extremity")
+        extremity.text = data.getlist("member")[0]
+
+        interesting_facts = xml.SubElement(aboutYou, "interesting_facts")
+        interesting_facts.text = data.getlist("interesting_facts")[0]
+
+        ##Superowers
+        superpowerEl = xml.Element("superpowers")
+        aboutYou.append(superpowerEl)
+
+        for i in data.getlist("superpowers"):
+            superpower = xml.SubElement(superpowerEl, "superpower")
+            superpower.text = i
+
+        ##Black list
+        black_listEl = xml.Element("black_list")
+        aboutYou.append(black_listEl)
+
+        for i in data.getlist("selectCountry"):
+            country = xml.SubElement(black_listEl, "country")
+            country.text = i
+
+        property = xml.SubElement(aboutYou, "property")
+        property.text = data.getlist("property")[0]
+
+        # Form rate
+        rate = xml.SubElement(rate_form, "rate")
+        rate.text = data.getlist("rate")[0]
+
+        tree = xml.ElementTree(root)
+        tree.write("form.xml", encoding="UTF-8")
+        logging.debug("This all")
+    except Exception as e:
+        logging.critical(str(e))
+    return HttpResponse(status=200)
